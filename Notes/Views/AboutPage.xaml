@@ -16,6 +16,6 @@
         </HorizontalStackLayout>
 
         <Label Text="{Binding Message}" />
-        <Button Text="Saber mais..." Clicked="LearnMore_Clicked" />
+        <Button Text="Visitar meus repositorios no GitHub" Clicked="LearnMore_Clicked" />
     </VerticalStackLayout>
 </ContentPage>
