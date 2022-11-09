@@ -1,5 +1,3 @@
-using Microsoft.Maui.ApplicationModel;
-
 namespace Notes.Views;
 
 public partial class AboutPage : ContentPage

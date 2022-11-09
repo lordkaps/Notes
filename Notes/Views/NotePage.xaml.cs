@@ -1,5 +1,4 @@
 using Notes.Models;
-using static Android.Content.ClipData;
 namespace Notes.Views;
 
 [QueryProperty(nameof(ItemId), nameof(ItemId))]
@@ -21,14 +20,14 @@ public partial class NotePage : ContentPage
     private async void SaveButton_Clicked(object sender, EventArgs e)
     {
         // Salva a nota e cria o arquivo
-        if (BindingContext is Models.Note note)
+        if (BindingContext is Note note)
             File.WriteAllText(note.Filename, TextEditor.Text);
 
         await Shell.Current.GoToAsync("..");
     }
     private async void DeleteButton_Clicked(object sender, EventArgs e)
     {
-        if (BindingContext is Models.Note note)
+        if (BindingContext is Note note)
         {
             // Deleta o arquivo se for encontrado
             if (File.Exists(note.Filename))
@@ -40,8 +39,10 @@ public partial class NotePage : ContentPage
 
     private void LoadNote(string fileName)
     {
-        Note noteModel = new Note();
-        noteModel.Filename = fileName;
+        Note noteModel = new()
+        {
+            Filename = fileName
+        };
 
         if (File.Exists(fileName))
         {
